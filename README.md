@@ -1,0 +1,2 @@
+# IndustrialSoftwareOfQt
+基于qt的工业软件收录，为工业软件开发提供参考
