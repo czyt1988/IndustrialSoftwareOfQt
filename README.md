@@ -1,7 +1,7 @@
-# Industrial Software Of Qt
+# Qt开源工业软件收录
 基于qt的工业软件收录，为工业软件开发提供参考
 
-
+-> [基于Qt的2D绘图可视化](./visualization2D.md)
 
 ## 1、CAD方向
 
