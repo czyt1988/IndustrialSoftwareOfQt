@@ -1,9 +1,22 @@
-# Qt开源工业软件收录
+Qt开源工业软件收录
+
 基于qt的工业软件收录，为工业软件开发提供参考
 
 -> [基于Qt的2D绘图可视化](./visualization2D.md)
 
-## 1、CAD方向
+## CAD方向
+
+### FreeCAD
+
+FreeCAD是一个开源的参数化3D建模工具，主要用于设计任何大小的真实对象。参数化建模允许您通过返回模型历史记录来更改其参数，从而轻松修改设计。
+
+https://github.com/FreeCAD/FreeCAD
+
+官网：https://www.freecadweb.org/
+
+![](./screenshot/freecad.jpg)
+
+![](./screenshot/freecad2.png)
 
 ### Mayo
 
@@ -31,7 +44,49 @@ https://github.com/LibreCAD/LibreCAD
 
 ![](./screenshot/librecad_screenshot_2.1.3.png)
 
+### rhiocad
 
+CAD，基于OpenCascade。参数化，参数化三维建模器
+
+https://github.com/mikowiec/rhioCAD
+
+![](./screenshot/rhiocad.jpg)
+
+### Analysis Situs
+
+Analysis Situs是一个开源原型工作台和一个开发CAD/CAM/CAE算法的SDK。其主要驱动思想是为CAD软件开发人员提供一个高度直观、可视化和可定制的孵化器，新的CAD算法由此诞生。工作台使用C++和Tcl作为主要编程语言。该应用程序包括分层组织的数据模型、基于VTK的3D查看器和脚本控制台。提供了一系列几何处理算法，从CAD特征识别到网格计算。
+
+http://analysissitus.org/
+
+https://gitlab.com/ssv/AnalysisSitus
+
+![](./screenshot/AnalysisSitus.gif)
+
+### TiGL
+
+https://github.com/DLR-SC/tigl
+
+TiGL几何图形库可用于计算和处理CPACS文件中存储的飞机几何图形。TiGL提供了许多与几何体相关的功能，如
+
+用于计算飞机表面上点的点检索函数
+
+求交函数以计算飞机与平面的交点
+
+导出标准CAD文件格式（STEP+IGES）或网格格式的函数，包括VTK、Collada和STL。
+
+![](./screenshot/tiglviewer.jpg)
+
+## EDA
+
+### Kicad
+
+https://gitlab.com/kicad/code/kicad
+
+官网：[www.kicad.org](https://www.kicad.org/)
+
+![](./screenshot/kicad.png)
+
+![](./screenshot/kicad2.png)
 
 ###  LibrePCB
 
@@ -41,7 +96,13 @@ LibrePCB是一个开发印刷电路板的免费EDA软件。它在Linux、Windows
 
 ![](./screenshot/LibrePCB.png)
 
-## 2、CAE方向
+## CAE方向
+
+### OpenFOAM
+
+OpenFOAM是由OpenFOAM基金会发布的免费开源计算流体动力学（CFD）软件包。它在工程和科学的大部分领域都拥有庞大的用户群，包括商业和学术组织。OpenFOAM具有广泛的功能，可以解决任何问题，从涉及化学反应、湍流和传热的复杂流体流动，到固体动力学和电磁学。
+
+https://github.com/OpenFOAM/OpenFOAM-dev
 
 ### ParaView
 
@@ -67,7 +128,40 @@ https://gitee.com/DISOGitee/FastCAE
 
 ![](./screenshot/fastcae.png)
 
-## 3、可视化
+## FEM
+
+### GMSH
+
+Gmsh是一个开源的三维有限元网格生成器，具有内置的CAD引擎和后处理器。其设计目标是提供一种快速、轻便、用户友好的网格工具，具有参数化输入和高级可视化功能。Gmsh围绕四个模块构建：几何体、网格、解算器和后处理。
+
+https://gitlab.onelab.info/gmsh/gmsh
+
+官网：https://gmsh.info/
+
+![](./screenshot/gmsh.png)
+
+
+
+## 可视化
+
+### OpenCASCADE(OCC)
+
+https://dev.opencascade.org/
+
+OCCT是唯一的开源全尺寸三维几何库。OCCT致力于成为最好的免费cad软件内核之一，广泛用于开发涉及以下工程和机械领域的专业程序：三维建模（cad）、制造（CAM）、数值模拟（CAE）、测量设备（CMM）和质量控制（CAQ）。自1999年作为开源CAD软件内核发布以来，OCCT已成功应用于从建筑施工到航空航天和汽车等众多项目。
+
+### OpenNURBS 
+
+https://github.com/OpenNURBS/OpenNURBS
+
+openNURBS 旨在为CAD、CAM、CAE与计算机图形软件开发人员提供一个在不同的软件间精确转换 3D 几何的工具。
+
+openNURBS 所提供的工具包括：
+
+- 用于读写 3DM 文件的 C++ 源码库，支持微软与苹果公司的操作系统，提供一个 makefile 作为其他编译器的入口点。
+- 可以读、写3DM文件格式的.NET 源代码库。
+- 品质保证与版本控制。
+- 技术支持。
 
 ### VTK
 
@@ -107,7 +201,7 @@ https://github.com/Slicer/Slicer
 
 ![](./screenshot/3DSlicerSegmentEditor.png)
 
-## 4、地理信息
+## 地理信息
 
 ### QGIS
 
