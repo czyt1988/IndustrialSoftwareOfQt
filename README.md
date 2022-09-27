@@ -201,6 +201,16 @@ https://github.com/Slicer/Slicer
 
 ![](./screenshot/3DSlicerSegmentEditor.png)
 
+### LabPlot2
+
+LabPlot是一个用于数据集和函数的二维和三维图形表示的程序。它带有一个完整的用户界面，它为您提供了很多功能，如希尔伯特变换、统计、颜色映射和条件格式
+
+https://github.com/KDE/labplot
+
+官网：https://labplot.kde.org/
+
+![](./screenshot/LabPlot2.png)
+
 ## 地理信息
 
 ### QGIS
@@ -214,3 +224,6 @@ https://github.com/qgis/QGIS
 ![](./screenshot/qgis.png)
 
 ![](./screenshot/qgis2.png)
+
+### 
+
