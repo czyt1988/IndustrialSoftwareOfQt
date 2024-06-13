@@ -76,6 +76,15 @@ TiGL几何图形库可用于计算和处理CPACS文件中存储的飞机几何�
 
 ![](./screenshot/tiglviewer.jpg)
 
+### Klampt
+
+Klampt是Kris' Locomotion and Manipulation Planning Toolbox（运动和操纵规划工具箱）的简称。它是一个用于机器人建模、模拟、规划、优化和可视化的开源跨平台软件包。Klampt的目标是为学习机器人、分析机器人、开发算法和智能行为原型设计提供一种广泛可用的编程工具。它在机器人操纵和运动方面具有特殊的优势。
+
+Klampt本身是使用C++和Python混合开发的，图形用户界面基于Qt，图形渲染基于OpenGL。Klampt支持Windows、MaxOS、Linux等操作系统。它提供了C++和Python两种API供开发人员使用。
+
+https://github.com/krishauser/Klampt
+
+
 ## EDA
 
 ### Kicad
@@ -211,6 +220,26 @@ https://github.com/KDE/labplot
 
 ![](./screenshot/LabPlot2.png)
 
+### inviwo
+
+Inviwo是一个用于快速原型可视化的软件框架。它使用C++编写，充分利用现代图形硬件，并遵循BSD许可协议，允许在任何环境（包括商业环境）中自由使用。
+
+https://github.com/inviwo/inviwo
+
+![](./screenshot/Inviwo.png)
+
+### visit
+
+VisIt是一个开源的、交互式的、可扩展的、可视化、动画和分析工具。
+
+无论是Unix、Windows还是Mac工作站，用户都可以交互式地可视化并分析，从小型桌面电脑（<10核心）到规模大型计算机（>10,000核心）等各种规模的数据。
+
+用户能够迅速生成可视化图像，通过时间进行动画展示，使用各种运算符和数学表达式来操作它们，并将生成的图像和动画保存用于演示。VisIt支持丰富的可视化功能，使用户能够查看包括在二维和三维（2D和3D）结构化、自适应和非结构化网格上定义的标量和矢量场在内的多种数据。由于其可定制的插件设计，VisIt能够可视化来自120多种不同科学数据格式的数据。
+
+https://github.com/visit-dav/visit
+
+![](./screenshot/Vislt.png)
+
 ## 地理信息
 
 ### QGIS
@@ -225,5 +254,10 @@ https://github.com/qgis/QGIS
 
 ![](./screenshot/qgis2.png)
 
-### 
+### GPXSee
 
+GPXSee是一款基于Qt的强大的GPS日志文件查看器和分析工具，它支持几乎所有常见的GPS日志文件格式。无论你是户外爱好者、数据分析师，还是软件开发者，GPXSee都能提供直观且功能全面的界面来帮助你查看、解析和理解你的GPS轨迹数据。
+
+https://github.com/tumic0/GPXSee
+
+![](./screenshot/GPXSee.png)
