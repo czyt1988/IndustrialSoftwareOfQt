@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+  {{ super() }}
+  <meta name="author" content="{{ config.site_author }}" />
+  <meta name="theme-color" content="#16324B" />
+  {% if page %}
+  <meta property="og:type" content="book" />
+  <meta property="og:title" content="{{ page.title or config.site_name }}" />
+  <meta property="og:description" content="{{ config.site_description }}" />
+  {% if page.canonical_url %}<meta property="og:url" content="{{ page.canonical_url }}" />{% endif %}
+  {% endif %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "name": {{ config.extra.book.title | tojson }},
+    "alternateName": {{ config.extra.book.subtitle | tojson }},
+    "inLanguage": "zh-CN",
+    "author": { "@type": "Person", "name": {{ config.site_author | tojson }} },
+    "datePublished": "{{ config.extra.book.year }}",
+    "bookEdition": {{ config.extra.book.edition | tojson }},
+    "url": {{ config.site_url | tojson }}
+  }
+  </script>
+{% endblock %}

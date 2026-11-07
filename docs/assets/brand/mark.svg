@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Qt 工业软件">
+  <rect width="64" height="64" rx="6" fill="#16324B"/>
+  <circle cx="30" cy="30" r="15" fill="none" stroke="#F4EFE6" stroke-width="5"/>
+  <path d="M40 41 L50 52" stroke="#C0762A" stroke-width="6" stroke-linecap="square"/>
+  <rect x="43" y="10" width="11" height="3" fill="#C0762A"/>
+  <rect x="10" y="43" width="3" height="11" fill="#C0762A"/>
+</svg>

@@ -1,0 +1,54 @@
+name: 构建并部署电子书
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: 安装依赖
+        run: pip install -r requirements.txt
+
+      - name: 生成站点图片
+        run: python tools/build_images.py
+
+      - name: 构建站点（严格模式）
+        run: mkdocs build --strict
+
+      - name: 配置 GitHub Pages
+        uses: actions/configure-pages@v5
+        # Pages 首次启用需要在仓库 Settings → Pages 选择 Source: GitHub Actions。
+        # 本 workflow 负责之后每次推送的构建与部署。
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

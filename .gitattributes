@@ -1,0 +1,18 @@
+* text=auto
+
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.py text eol=lf
+*.js text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.svg text eol=lf
+*.sh text eol=lf
+
+*.png binary
+*.webp binary
+*.gif binary
+*.jpg binary
+*.jpeg binary
+*.ico binary

@@ -1,0 +1,1030 @@
+/* ==========================================================================
+   Qt 工业软件 · 书籍样式
+   设计意图：一张摊在桌面上的书页。暖白纸张、深蓝墨色、安全橙作唯一强调色。
+   版式遵循中文技术书习惯：正文无衬线、章节标题加粗、图注小字。
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. 设计变量
+   -------------------------------------------------------------------------- */
+
+:root {
+  --book-paper: #fbf9f4;
+  --book-desk: #efeae1;
+  --book-raised: #ffffff;
+  --book-ink: #191d23;
+  --book-ink-soft: #3d444d;
+  --book-muted: #6d747d;
+  --book-line: #e3ddd2;
+  --book-line-strong: #cfc7b8;
+  --book-navy: #16324b;
+  --book-navy-soft: #2a4a68;
+  --book-amber: #a9621b;
+  --book-link: #1b4a6b;
+  --book-code-bg: #f2eee6;
+  --book-active: #f0ebe1;
+  --book-mark: #f4e3c8;
+
+  --book-sans: "PingFang SC", "HarmonyOS Sans SC", "MiSans", "Source Han Sans SC",
+    "Noto Sans CJK SC", "Microsoft YaHei UI", "Microsoft YaHei", -apple-system,
+    "Segoe UI", Roboto, sans-serif;
+  --book-serif: "Songti SC", "STSong", "Source Han Serif SC", "Noto Serif CJK SC",
+    "SimSun", Georgia, serif;
+  --book-mono: "JetBrains Mono", "Cascadia Code", "SFMono-Regular", Consolas,
+    "Liberation Mono", monospace;
+  --book-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia,
+    "Songti SC", serif;
+
+  --book-radius: 2px;
+  --book-shadow: 0 1px 2px rgb(25 29 35 / 4%), 0 12px 32px -18px rgb(25 29 35 / 22%);
+
+  /* Material 变量对齐 */
+  --md-default-bg-color: var(--book-paper);
+  --md-default-fg-color: var(--book-ink);
+  --md-default-fg-color--light: var(--book-muted);
+  --md-default-fg-color--lighter: var(--book-line-strong);
+  --md-typeset-color: var(--book-ink);
+  --md-typeset-a-color: var(--book-link);
+  --md-primary-fg-color: var(--book-navy);
+  --md-accent-fg-color: var(--book-amber);
+  --md-code-bg-color: var(--book-code-bg);
+  --md-code-fg-color: var(--book-ink-soft);
+}
+
+[data-md-color-scheme="slate"] {
+  --book-paper: #12171d;
+  --book-desk: #0b0f13;
+  --book-raised: #171d24;
+  --book-ink: #e8e3d9;
+  --book-ink-soft: #c3c0b8;
+  --book-muted: #8d949c;
+  --book-line: #262d35;
+  --book-line-strong: #39424c;
+  --book-navy: #a9c8e2;
+  --book-navy-soft: #8fb2d1;
+  --book-amber: #d79148;
+  --book-link: #9dc3e0;
+  --book-code-bg: #1a2027;
+  --book-active: #1c232b;
+  --book-mark: #3a2e1c;
+  --book-shadow: 0 1px 2px rgb(0 0 0 / 30%), 0 12px 32px -18px rgb(0 0 0 / 70%);
+
+  --md-default-bg-color: var(--book-paper);
+  --md-default-fg-color: var(--book-ink);
+  --md-default-fg-color--light: var(--book-muted);
+  --md-default-fg-color--lighter: var(--book-line-strong);
+  --md-primary-fg-color: var(--book-navy);
+  --md-accent-fg-color: var(--book-amber);
+  --md-typeset-a-color: var(--book-link);
+  --md-code-bg-color: var(--book-code-bg);
+  --md-code-fg-color: var(--book-ink-soft);
+}
+
+/* --------------------------------------------------------------------------
+   2. 骨架：桌面 / 纸张 / 页眉
+   -------------------------------------------------------------------------- */
+
+body {
+  font-family: var(--book-sans);
+  background-color: var(--book-desk);
+  color: var(--book-ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.md-header {
+  background-color: color-mix(in srgb, var(--book-paper) 86%, transparent);
+  color: var(--book-ink);
+  border-bottom: 1px solid var(--book-line);
+  box-shadow: none;
+  backdrop-filter: blur(14px) saturate(120%);
+}
+
+.md-header[data-md-state="shadow"],
+.md-header--shadow {
+  box-shadow: none;
+  border-bottom-color: var(--book-line-strong);
+}
+
+.md-header__title {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.md-header__topic:first-child {
+  font-weight: 600;
+}
+
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 2px;
+}
+
+.md-search__form {
+  background-color: var(--book-raised);
+  border: 1px solid var(--book-line);
+  border-radius: var(--book-radius);
+  box-shadow: none;
+}
+
+.md-search__input {
+  font-family: var(--book-sans);
+  font-size: 13px;
+}
+
+.md-search__input::placeholder {
+  color: var(--book-muted);
+}
+
+.md-search__icon {
+  color: var(--book-muted);
+}
+
+.md-header__source {
+  max-width: none;
+}
+
+.md-source__repository {
+  max-width: 17rem;
+  font-size: 11.5px;
+}
+
+.md-main {
+  background-color: var(--book-desk);
+}
+
+.md-main__inner {
+  margin-top: 0;
+}
+
+/* 纸张本身 */
+.md-content {
+  background-color: var(--book-paper);
+  border-left: 1px solid var(--book-line);
+  border-right: 1px solid var(--book-line);
+}
+
+.md-content__inner {
+  max-width: 40rem;
+  padding: 2.6rem 2.2rem 5rem;
+}
+
+/* Material 用高特异性选择器给正文加了左右外边距，这里同优先级地覆盖为居中 */
+[dir="ltr"] .md-sidebar--primary:not([hidden]) ~ .md-content > .md-content__inner,
+[dir="rtl"] .md-sidebar--secondary:not([hidden]) ~ .md-content > .md-content__inner {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (min-width: 76.25em) {
+  .md-content__inner {
+    padding: 3.2rem 3rem 6rem;
+  }
+}
+
+.md-content__inner::before {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   3. 侧边栏：书的目录
+   -------------------------------------------------------------------------- */
+
+.md-sidebar {
+  background-color: transparent;
+}
+
+.md-sidebar--primary {
+  padding-top: 0.4rem;
+}
+
+.md-nav {
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.md-nav__title {
+  color: var(--book-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  padding: 0 0.6rem 0.7rem;
+  border-bottom: 1px solid var(--book-line);
+  margin-bottom: 0.7rem;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* 桌面端不需要侧边栏顶部的站点名，页眉已经显示了 */
+@media screen and (min-width: 76.25em) {
+  .md-sidebar--primary .md-nav--primary > .md-nav__title {
+    display: none;
+  }
+}
+
+.md-nav__link {
+  color: var(--book-ink-soft);
+  padding: 0.34rem 0.6rem;
+  border-radius: var(--book-radius);
+  transition: background-color 120ms, color 120ms;
+}
+
+.md-nav__link:hover {
+  color: var(--book-ink);
+  background-color: var(--book-active);
+}
+
+.md-nav__link--active,
+.md-nav__link--active:hover {
+  color: var(--book-navy);
+  font-weight: 600;
+  background-color: var(--book-active);
+  box-shadow: inset 2px 0 0 var(--book-amber);
+}
+
+.md-nav__item--nested > .md-nav__link {
+  font-weight: 600;
+  color: var(--book-ink);
+  letter-spacing: 0.02em;
+}
+
+.md-nav__item--nested > .md-nav__link .md-nav__icon {
+  color: var(--book-muted);
+}
+
+.md-nav--secondary .md-nav__title {
+  border-bottom: none;
+  margin-bottom: 0.4rem;
+}
+
+.md-nav--secondary .md-nav__link {
+  color: var(--book-muted);
+  font-size: 13px;
+  padding: 0.24rem 0.6rem;
+  border-left: 1px solid var(--book-line);
+  border-radius: 0;
+}
+
+.md-nav--secondary .md-nav__link--active,
+.md-nav--secondary .md-nav__link:hover {
+  color: var(--book-ink);
+  background: transparent;
+  box-shadow: none;
+  border-left-color: var(--book-amber);
+}
+
+/* --------------------------------------------------------------------------
+   4. 正文排版
+   -------------------------------------------------------------------------- */
+
+.md-typeset {
+  font-size: 16.5px;
+  line-height: 1.9;
+  color: var(--book-ink);
+  font-family: var(--book-sans);
+  letter-spacing: 0.01em;
+}
+
+.md-typeset p {
+  margin: 0 0 1.15em;
+}
+
+.md-typeset strong {
+  font-weight: 650;
+  color: var(--book-ink);
+}
+
+.md-typeset a {
+  color: var(--book-link);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--book-link) 32%, transparent);
+  transition: color 120ms, border-color 120ms;
+}
+
+.md-typeset a:hover {
+  color: var(--book-amber);
+  border-bottom-color: var(--book-amber);
+}
+
+.md-typeset h1 {
+  font-size: 2.05rem;
+  line-height: 1.32;
+  font-weight: 700;
+  letter-spacing: -0.012em;
+  color: var(--book-ink);
+  margin: 0.5rem 0 0.9rem;
+}
+
+.md-typeset h2 {
+  font-size: 1.32rem;
+  line-height: 1.4;
+  font-weight: 650;
+  letter-spacing: 0.005em;
+  color: var(--book-ink);
+  margin: 3rem 0 1rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--book-line);
+}
+
+.md-typeset h3 {
+  font-size: 1.06rem;
+  font-weight: 650;
+  margin: 2.1rem 0 0.7rem;
+  color: var(--book-ink);
+}
+
+.md-typeset h4 {
+  font-size: 0.95rem;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  color: var(--book-ink-soft);
+  margin: 1.7rem 0 0.5rem;
+}
+
+.md-typeset h2 + h3 {
+  margin-top: 1.4rem;
+}
+
+.md-typeset .headerlink {
+  color: var(--book-line-strong);
+  opacity: 0;
+  transition: opacity 120ms, color 120ms;
+}
+
+.md-typeset h2:hover .headerlink,
+.md-typeset h3:hover .headerlink {
+  opacity: 1;
+}
+
+.md-typeset ul,
+.md-typeset ol {
+  margin: 0 0 1.2em;
+  padding-left: 1.5em;
+}
+
+.md-typeset li {
+  margin-bottom: 0.35em;
+}
+
+.md-typeset li::marker {
+  color: var(--book-amber);
+}
+
+.md-typeset hr {
+  border: none;
+  border-top: 1px solid var(--book-line);
+  margin: 2.6rem 0;
+}
+
+.md-typeset blockquote {
+  border-left: 2px solid var(--book-amber);
+  color: var(--book-ink-soft);
+  background: transparent;
+  padding: 0.2rem 0 0.2rem 1.4rem;
+  margin: 1.8rem 0;
+  font-family: var(--book-serif);
+  font-size: 1.02em;
+  line-height: 1.85;
+}
+
+.md-typeset blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* 首段稍微放大，像书的起首段 */
+.md-typeset > p:first-of-type {
+  color: var(--book-ink);
+}
+
+/* --------------------------------------------------------------------------
+   5. 章节开篇（由 hooks.py 注入）
+   -------------------------------------------------------------------------- */
+
+.chapter-kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--book-muted);
+  margin: 0 0 1.4rem;
+  font-weight: 600;
+}
+
+.chapter-part {
+  white-space: nowrap;
+}
+
+.chapter-rule {
+  flex: 0 0 26px;
+  height: 1px;
+  background: var(--book-amber);
+  opacity: 0.7;
+}
+
+.chapter-no {
+  color: var(--book-amber);
+  white-space: nowrap;
+}
+
+.chapter-meta {
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--book-muted);
+  margin: -0.2rem 0 2.4rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid var(--book-line);
+}
+
+/* --------------------------------------------------------------------------
+   6. 提示块：本章要点 / 技术注记
+   -------------------------------------------------------------------------- */
+
+.md-typeset .admonition,
+.md-typeset details {
+  border: 1px solid var(--book-line);
+  border-left: 3px solid var(--book-line-strong);
+  border-radius: var(--book-radius);
+  background-color: var(--book-raised);
+  box-shadow: none;
+  font-size: 0.94em;
+}
+
+/* Material 按类型给 admonition 写死了颜色，这里用同等特异性覆盖回来 */
+.md-typeset .admonition.admonition,
+.md-typeset details.details {
+  border-color: var(--book-line);
+  border-left-color: var(--book-line-strong);
+  background-color: var(--book-raised);
+}
+
+.md-typeset .admonition > .admonition-title,
+.md-typeset details > summary {
+  background-color: transparent;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  font-size: 0.92em;
+  padding: 0.7rem 1rem 0.4rem 2.2rem;
+  border: none;
+  color: var(--book-ink-soft);
+}
+
+.md-typeset .admonition.admonition > .admonition-title::before,
+.md-typeset details.details > summary::before {
+  top: 0.85rem;
+  background-color: var(--book-ink-soft);
+}
+
+.md-typeset .admonition > :last-child,
+.md-typeset details > :last-child {
+  margin-bottom: 0.9rem;
+}
+
+.md-typeset .admonition.abstract,
+.md-typeset .admonition.summary {
+  border-left-color: var(--book-amber);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--book-amber) 5%, var(--book-raised)),
+    var(--book-raised) 70%
+  );
+}
+
+.md-typeset .admonition.abstract > .admonition-title,
+.md-typeset .admonition.summary > .admonition-title {
+  color: var(--book-amber);
+}
+
+.md-typeset .admonition.abstract > .admonition-title::before,
+.md-typeset .admonition.summary > .admonition-title::before {
+  background-color: var(--book-amber);
+}
+
+.md-typeset .admonition.note,
+.md-typeset .admonition.tip {
+  border-left-color: var(--book-navy-soft);
+}
+
+.md-typeset .admonition.warning {
+  border-left-color: #b4491f;
+}
+
+/* --------------------------------------------------------------------------
+   7. 图表与代码
+   -------------------------------------------------------------------------- */
+
+.md-typeset figure {
+  margin: 2.2rem 0;
+  text-align: left;
+}
+
+.md-typeset figure img,
+.md-typeset .book-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--book-line);
+  border-radius: var(--book-radius);
+  background: var(--book-raised);
+  box-shadow: var(--book-shadow);
+}
+
+.md-typeset figcaption {
+  margin-top: 0.75rem;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--book-muted);
+  letter-spacing: 0.02em;
+  text-align: center;
+  font-style: normal;
+}
+
+.md-typeset .fig-no {
+  color: var(--book-amber);
+  font-weight: 600;
+  margin-right: 0.4em;
+}
+
+/* Mermaid 图与普通截图共用图注排版，但图形本身不要再套一层边框 */
+.md-typeset figure.book-diagram {
+  padding: 1.4rem 1.2rem 1rem;
+  background: var(--book-raised);
+  border: 1px solid var(--book-line);
+  border-radius: var(--book-radius);
+  box-shadow: var(--book-shadow);
+  overflow-x: auto;
+}
+
+.md-typeset figure.book-diagram figcaption {
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--book-line);
+}
+
+.md-typeset pre.book-mermaid {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  text-align: center;
+  font-family: var(--book-sans);
+}
+
+/* Mermaid 渲染后会把 pre 换成 div，宿主负责居中和缩放 */
+.md-typeset .mermaid-host {
+  margin: 0;
+  text-align: center;
+  overflow-x: auto;
+}
+
+/* 渲染完成前不闪原始图源；脚本完成后给宿主加 data-mermaid-ready。
+   这里不能用 display:none，Mermaid 需要节点保留布局才能计算边标签的位置。 */
+.md-typeset .mermaid-host:not([data-mermaid-ready]) {
+  position: relative;
+  min-height: 120px;
+}
+
+.md-typeset .mermaid-host:not([data-mermaid-ready])::before {
+  content: "图表加载中…";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--book-muted);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+}
+
+.md-typeset .mermaid-host:not([data-mermaid-ready]) .book-mermaid {
+  visibility: hidden;
+}
+
+.md-typeset .mermaid-host .book-mermaid,
+.md-typeset .mermaid-host pre.book-mermaid {
+  margin: 0;
+  text-align: center;
+}
+
+.md-typeset .mermaid-host svg,
+.md-typeset pre.book-mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.md-typeset pre.book-mermaid[data-processed] {
+  overflow-x: auto;
+}
+
+@media screen and (max-width: 42em) {
+  .md-typeset figure.book-diagram {
+    padding: 0.9rem 0.6rem 0.7rem;
+  }
+}
+
+.md-typeset table:not([class]) {
+  font-size: 0.86em;
+  border: none;
+  border-top: 2px solid var(--book-navy);
+  border-bottom: 1px solid var(--book-line);
+  box-shadow: none;
+  display: table;
+  width: 100%;
+}
+
+/* 桌面端让表格比正文略宽，减少换行 */
+@media screen and (min-width: 76.25em) {
+  .md-typeset table:not([class]) {
+    width: calc(100% + 2.4rem);
+    margin-left: -1.2rem;
+  }
+}
+
+.md-typeset table:not([class]) th {
+  background: transparent;
+  color: var(--book-ink);
+  font-weight: 650;
+  border-bottom: 1px solid var(--book-line);
+  padding: 0.6em 0.75em;
+  white-space: nowrap;
+}
+
+.md-typeset table:not([class]) td {
+  border-top: 1px solid var(--book-line);
+  padding: 0.55em 0.75em;
+  vertical-align: top;
+}
+
+.md-typeset table:not([class]) tr:hover {
+  background: color-mix(in srgb, var(--book-active) 55%, transparent);
+  box-shadow: none;
+}
+
+.md-typeset code {
+  font-family: var(--book-mono);
+  font-size: 0.86em;
+  background-color: var(--book-code-bg);
+  border-radius: var(--book-radius);
+  padding: 0.12em 0.36em;
+  color: var(--book-ink-soft);
+}
+
+.md-typeset pre > code,
+.md-typeset .highlight code {
+  font-size: 0.85em;
+  line-height: 1.75;
+  background: transparent;
+  padding: 0;
+}
+
+.md-typeset .highlight,
+.md-typeset pre {
+  border: 1px solid var(--book-line);
+  border-radius: var(--book-radius);
+  background-color: var(--book-code-bg);
+  box-shadow: none;
+  margin: 1.6rem 0;
+}
+
+.md-typeset .highlight pre {
+  border: none;
+  margin: 0;
+}
+
+.md-typeset .highlight span.filename {
+  background: var(--book-code-bg);
+  border-bottom: 1px solid var(--book-line);
+  color: var(--book-muted);
+  font-family: var(--book-mono);
+  font-size: 0.75em;
+}
+
+.md-clipboard {
+  color: var(--book-muted);
+}
+
+.md-clipboard:hover {
+  color: var(--book-amber);
+}
+
+/* --------------------------------------------------------------------------
+   8. 上一章 / 下一章
+   -------------------------------------------------------------------------- */
+
+.md-footer {
+  background-color: var(--book-desk);
+  color: var(--book-ink);
+}
+
+.md-footer__inner {
+  margin: 0 auto;
+  padding: 0;
+}
+
+.md-footer__link {
+  border-top: 1px solid var(--book-line);
+  padding: 1.6rem 1.2rem;
+  opacity: 0.9;
+}
+
+.md-footer__link:hover {
+  opacity: 1;
+  background-color: var(--book-active);
+}
+
+.md-footer__link--next {
+  border-left: 1px solid var(--book-line);
+}
+
+.md-footer__title {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.md-footer__direction {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--book-muted);
+  opacity: 1;
+}
+
+.md-footer__button {
+  color: var(--book-muted);
+}
+
+.md-footer-meta {
+  background-color: var(--book-desk);
+  border-top: 1px solid var(--book-line);
+}
+
+.md-footer-meta__inner {
+  padding: 1rem 0.8rem;
+}
+
+.md-copyright {
+  color: var(--book-muted);
+  font-size: 11.5px;
+  letter-spacing: 0.02em;
+}
+
+.md-copyright__highlight {
+  color: var(--book-ink-soft);
+}
+
+.md-social__link {
+  color: var(--book-muted);
+}
+
+.md-social__link:hover {
+  color: var(--book-amber);
+}
+
+/* --------------------------------------------------------------------------
+   9. 封面
+   -------------------------------------------------------------------------- */
+
+.book-cover {
+  position: relative;
+  margin: 0 0 2.2rem;
+  padding: 4.5rem 2.5rem 3.5rem;
+  border: 1px solid var(--book-line);
+  background-color: var(--book-raised);
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--book-line) 60%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--book-line) 60%, transparent) 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-position: center;
+  overflow: hidden;
+}
+
+.book-cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 40%,
+    var(--book-raised) 0%,
+    color-mix(in srgb, var(--book-raised) 92%, transparent) 45%,
+    transparent 78%
+  );
+  pointer-events: none;
+}
+
+.book-cover > * {
+  position: relative;
+  z-index: 1;
+}
+
+.cover-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.34em;
+  color: var(--book-amber);
+  margin: 0 0 2.4rem;
+  font-weight: 600;
+}
+
+.cover-title {
+  font-family: var(--book-serif);
+  font-size: 3.5rem;
+  line-height: 1.12;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin: 0;
+  color: var(--book-ink);
+}
+
+.cover-subtitle {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--book-ink-soft);
+  margin: 1.4rem 0 0;
+  max-width: 26em;
+  letter-spacing: 0.02em;
+}
+
+.cover-rule {
+  width: 100%;
+  height: 1px;
+  background: var(--book-line-strong);
+  margin: 2.6rem 0 1.2rem;
+  position: relative;
+}
+
+.cover-rule::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -1px;
+  width: 64px;
+  height: 2px;
+  background: var(--book-amber);
+}
+
+.cover-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.6rem;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--book-muted);
+  margin: 0;
+}
+
+.cover-meta strong {
+  color: var(--book-ink-soft);
+  font-weight: 600;
+}
+
+.book-cover + h2 {
+  margin-top: 1.6rem;
+}
+
+/* 封面页的引导链接 */
+.md-typeset .book-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0;
+  padding: 0.7rem 1.2rem;
+  border: 1px solid var(--book-ink);
+  border-radius: var(--book-radius);
+  color: var(--book-ink);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  transition: background-color 140ms, color 140ms;
+}
+
+.md-typeset .book-cta:hover {
+  background: var(--book-ink);
+  color: var(--book-paper);
+  border-color: var(--book-ink);
+}
+
+/* 封面页隐藏页脚导航，避免“上一章”出现在书名页 */
+.book-home .md-footer__inner {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   10. 阅读进度
+   -------------------------------------------------------------------------- */
+
+.book-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  background: var(--book-amber);
+  z-index: 12;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   11. 细节修饰
+   -------------------------------------------------------------------------- */
+
+::selection {
+  background: var(--book-mark);
+  color: var(--book-ink);
+}
+
+.md-typeset .md-tag,
+.md-typeset .task-list-indicator::before {
+  border-radius: var(--book-radius);
+}
+
+.md-typeset .footnote {
+  color: var(--book-muted);
+  font-size: 0.88em;
+}
+
+.md-typeset .footnote-backref {
+  border: none;
+}
+
+/* 表格在窄屏可横向滚动 */
+.md-typeset .md-table-scroll {
+  overflow-x: auto;
+}
+
+/* 移动端：去掉纸张边框 */
+@media screen and (max-width: 76.1875em) {
+  .md-content {
+    border-left: none;
+    border-right: none;
+  }
+
+  .md-content__inner {
+    padding: 1.6rem 1.1rem 4rem;
+  }
+
+  .md-typeset h1 {
+    font-size: 1.65rem;
+  }
+
+  .cover-title {
+    font-size: 2.4rem;
+  }
+
+  .book-cover {
+    padding: 2.6rem 1.5rem 2rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   12. 打印：导出 PDF 时按书页排版
+   -------------------------------------------------------------------------- */
+
+@media print {
+  .md-header,
+  .md-sidebar,
+  .md-footer,
+  .book-progress,
+  .md-top,
+  .md-clipboard {
+    display: none !important;
+  }
+
+  .md-main {
+    background: #fff;
+  }
+
+  .md-content {
+    border: none;
+  }
+
+  .md-typeset {
+    font-size: 10.5pt;
+    line-height: 1.8;
+  }
+
+  .md-typeset h1,
+  .md-typeset h2 {
+    page-break-after: avoid;
+  }
+
+  .md-typeset figure,
+  .md-typeset table,
+  .md-typeset pre {
+    page-break-inside: avoid;
+  }
+}
+
+/* 减少动效偏好 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+

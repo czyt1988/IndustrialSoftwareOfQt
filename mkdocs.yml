@@ -1,0 +1,121 @@
+site_name: Qt 工业软件工程实践
+site_url: https://czyt1988.github.io/IndustrialSoftwareOfQt/
+site_description: 从工程结构、架构到交付与 AI 协作，讲清大型 Qt 工业软件的开发实践
+site_author: 尘中远
+repo_url: https://github.com/czyt1988/IndustrialSoftwareOfQt
+repo_name: czyt1988/IndustrialSoftwareOfQt
+edit_uri: edit/main/docs/
+copyright: 本书以 MIT 协议发布 · 文中项目版权归各自作者所有
+
+docs_dir: docs
+site_dir: site
+
+theme:
+  name: material
+  language: zh
+  custom_dir: overrides
+  logo: assets/brand/mark.png
+  favicon: assets/brand/mark.png
+  font: false
+  palette:
+    - scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: 切换到夜间模式
+    - scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: 切换到日间模式
+  features:
+    - navigation.tracking
+    - navigation.top
+    - navigation.footer
+    - navigation.indexes
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.select
+    - content.tooltips
+
+extra_css:
+  - assets/css/book.css
+extra_javascript:
+  - assets/js/book.js
+  - assets/js/mermaid-init.js
+
+plugins:
+  - search:
+      lang: zh
+
+hooks:
+  - hooks.py
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: "¶"
+      toc_depth: 2-3
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: book-mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.mark
+  - pymdownx.keys
+  - pymdownx.caret
+  - pymdownx.tilde
+
+extra:
+  generator: false
+  book:
+    title: Qt 工业软件工程实践
+    subtitle: 架构、交付与 AI 协作
+    edition: 第一版
+    year: 2026
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/czyt1988/IndustrialSoftwareOfQt
+      name: 项目仓库
+
+nav:
+  - 封面: index.md
+  - 前言: preface.md
+  - 第一部 · 应用与选型背景:
+      - 01 工业软件版图: chapters/01-industrial-map.md
+      - 02 桌面框架选型: chapters/02-framework-selection.md
+  - 第二部 · 工程基础:
+      - 03 版本与许可证: chapters/03-versions-licenses.md
+      - 04 开发环境: chapters/04-dev-environment.md
+      - 05 工程结构: chapters/05-project-structure.md
+  - 第三部 · 架构与工程经验:
+      - 06 模块化与插件化: chapters/06-architecture.md
+      - 07 文档与质量: chapters/07-docs-quality.md
+      - 08 性能工程: chapters/08-performance.md
+      - 09 稳定性: chapters/09-stability.md
+      - 10 交付与部署: chapters/10-delivery.md
+  - 第四部 · 参考:
+      - 11 第三方库推荐: chapters/11-libraries.md
+  - 第五部 · AI:
+      - 12 AI 驱动开发: chapters/12-ai-development.md
+  - 附录:
+      - A 项目索引: appendix/a-project-index.md
+      - B 工具与资源: appendix/b-tools-resources.md
+      - C 术语表: appendix/c-glossary.md
+      - D 图片来源: appendix/d-sources.md
